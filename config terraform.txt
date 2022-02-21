@@ -1,0 +1,719 @@
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_db_instance.tfweb2 will be destroyed
+  - resource "aws_db_instance" "tfweb2" {
+      - address                               = "tfweb2.cwyboycueldk.us-east-2.rds.amazonaws.com" -> null
+      - allocated_storage                     = 5 -> null
+      - arn                                   = "arn:aws:rds:us-east-2:430572376143:db:tfweb2" -> null
+      - auto_minor_version_upgrade            = true -> null
+      - availability_zone                     = "us-east-2a" -> null
+      - backup_retention_period               = 0 -> null
+      - backup_window                         = "10:30-11:00" -> null
+      - ca_cert_identifier                    = "rds-ca-2019" -> null
+      - character_set_name                    = "" -> null
+      - copy_tags_to_snapshot                 = false -> null
+      - customer_owned_ip_enabled             = false -> null
+      - db_name                               = (sensitive) -> null
+      - db_subnet_group_name                  = "default" -> null
+      - delete_automated_backups              = true -> null
+      - deletion_protection                   = false -> null
+      - domain                                = "" -> null
+      - domain_iam_role_name                  = "" -> null
+      - enabled_cloudwatch_logs_exports       = [] -> null
+      - endpoint                              = "tfweb2.cwyboycueldk.us-east-2.rds.amazonaws.com:3306" -> null
+      - engine                                = "mysql" -> null
+      - engine_version                        = "8.0" -> null
+      - engine_version_actual                 = "8.0.27" -> null
+      - hosted_zone_id                        = "Z2XHWR1WZ565X2" -> null
+      - iam_database_authentication_enabled   = false -> null
+      - id                                    = "tfweb2" -> null
+      - identifier                            = "tfweb2" -> null
+      - identifier_prefix                     = "" -> null
+      - instance_class                        = "db.t2.micro" -> null
+      - iops                                  = 0 -> null
+      - kms_key_id                            = "" -> null
+      - latest_restorable_time                = "0001-01-01T00:00:00Z" -> null
+      - license_model                         = "general-public-license" -> null
+      - maintenance_window                    = "tue:05:35-tue:06:05" -> null
+      - max_allocated_storage                 = 0 -> null
+      - monitoring_interval                   = 0 -> null
+      - monitoring_role_arn                   = "" -> null
+      - multi_az                              = false -> null
+      - name                                  = "web2" -> null
+      - nchar_character_set_name              = "" -> null
+      - option_group_name                     = "default:mysql-8-0" -> null
+      - parameter_group_name                  = "default.mysql8.0" -> null
+      - password                              = (sensitive value)
+      - performance_insights_enabled          = false -> null
+      - performance_insights_kms_key_id       = "" -> null
+      - performance_insights_retention_period = 0 -> null
+      - port                                  = 3306 -> null
+      - publicly_accessible                   = true -> null
+      - replica_mode                          = "" -> null
+      - replicas                              = [] -> null
+      - replicate_source_db                   = "" -> null
+      - resource_id                           = "db-NDQTVN7GTRJT6YWNOWUL7WT7QA" -> null
+      - security_group_names                  = [] -> null
+      - skip_final_snapshot                   = true -> null
+      - status                                = "available" -> null
+      - storage_encrypted                     = false -> null
+      - storage_type                          = "gp2" -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {} -> null
+      - timezone                              = "" -> null
+      - username                              = (sensitive) -> null
+      - vpc_security_group_ids                = [
+          - "sg-02fddecda200eedcf",
+        ] -> null
+    }
+
+  # aws_elastic_beanstalk_application.web2tf will be destroyed
+  - resource "aws_elastic_beanstalk_application" "web2tf" {
+      - arn         = "arn:aws:elasticbeanstalk:us-east-2:430572376143:application/web2tf" -> null
+      - description = "web2-project for study Teraform with AWS" -> null
+      - id          = "web2tf" -> null
+      - name        = "web2tf" -> null
+      - tags        = {} -> null
+      - tags_all    = {} -> null
+    }
+
+  # aws_elastic_beanstalk_environment.web2tfenv will be destroyed
+  - resource "aws_elastic_beanstalk_environment" "web2tfenv" {
+      - all_settings           = [
+          - {
+              - name      = "AppSource"
+              - namespace = "aws:cloudformation:template:parameter"
+              - resource  = ""
+              - value     = "https://elasticbeanstalk-platform-assets-us-east-2.s3.us-east-2.amazonaws.com/stalks/eb_php74_amazon_linux_2_1.0.1434.0_20220128202133/sampleapp/EBSampleApp-PHP.zip"
+            },
+          - {
+              - name      = "Application Healthcheck URL"
+              - namespace = "aws:elasticbeanstalk:application"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "AssociatePublicIpAddress"
+              - namespace = "aws:ec2:vpc"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "Automatically Terminate Unhealthy Instances"
+              - namespace = "aws:elasticbeanstalk:monitoring"
+              - resource  = ""
+              - value     = "true"
+            },
+          - {
+              - name      = "Availability Zones"
+              - namespace = "aws:autoscaling:asg"
+              - resource  = ""
+              - value     = "Any"
+            },
+          - {
+              - name      = "BatchSize"
+              - namespace = "aws:elasticbeanstalk:command"
+              - resource  = ""
+              - value     = "100"
+            },
+          - {
+              - name      = "BatchSizeType"
+              - namespace = "aws:elasticbeanstalk:command"
+              - resource  = ""
+              - value     = "Percentage"
+            },
+          - {
+              - name      = "BlockDeviceMappings"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "ConfigDocument"
+              - namespace = "aws:elasticbeanstalk:healthreporting:system"
+              - resource  = ""
+              - value     = jsonencode(
+                    {
+                      - CloudWatchMetrics = {
+                          - Environment = {
+                              - ApplicationLatencyP10    = null
+                              - ApplicationLatencyP50    = null
+                              - ApplicationLatencyP75    = null
+                              - ApplicationLatencyP85    = null
+                              - ApplicationLatencyP90    = null
+                              - ApplicationLatencyP95    = null
+                              - ApplicationLatencyP99    = null
+                              - ApplicationLatencyP99.9  = null
+                              - ApplicationRequests2xx   = null
+                              - ApplicationRequests3xx   = null
+                              - ApplicationRequests4xx   = null
+                              - ApplicationRequests5xx   = null
+                              - ApplicationRequestsTotal = null
+                              - InstancesDegraded        = null
+                              - InstancesInfo            = null
+                              - InstancesNoData          = null
+                              - InstancesOk              = null
+                              - InstancesPending         = null
+                              - InstancesSevere          = null
+                              - InstancesUnknown         = null
+                              - InstancesWarning         = null
+                            }
+                          - Instance    = {
+                              - ApplicationLatencyP10    = null
+                              - ApplicationLatencyP50    = null
+                              - ApplicationLatencyP75    = null
+                              - ApplicationLatencyP85    = null
+                              - ApplicationLatencyP90    = null
+                              - ApplicationLatencyP95    = null
+                              - ApplicationLatencyP99    = null
+                              - ApplicationLatencyP99.9  = null
+                              - ApplicationRequests2xx   = null
+                              - ApplicationRequests3xx   = null
+                              - ApplicationRequests4xx   = null
+                              - ApplicationRequests5xx   = null
+                              - ApplicationRequestsTotal = null
+                              - CPUIdle                  = null
+                              - CPUIowait                = null
+                              - CPUIrq                   = null
+                              - CPUNice                  = null
+                              - CPUSoftirq               = null
+                              - CPUSystem                = null
+                              - CPUUser                  = null
+                              - InstanceHealth           = null
+                              - LoadAverage1min          = null
+                              - LoadAverage5min          = null
+                              - RootFilesystemUtil       = null
+                            }
+                        }
+                      - Version           = 1
+                    }
+                )
+            },
+          - {
+              - name      = "Cooldown"
+              - namespace = "aws:autoscaling:asg"
+              - resource  = ""
+              - value     = "360"
+            },
+          - {
+              - name      = "Custom Availability Zones"
+              - namespace = "aws:autoscaling:asg"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "DB_DATABASE"
+              - namespace = "aws:elasticbeanstalk:application:environment"
+              - resource  = ""
+              - value     = "web2"
+            },
+          - {
+              - name      = "DB_HOST"
+              - namespace = "aws:elasticbeanstalk:application:environment"
+              - resource  = ""
+              - value     = "tfweb2.cwyboycueldk.us-east-2.rds.amazonaws.com"
+            },
+          - {
+              - name      = "DB_PASSWORD"
+              - namespace = "aws:elasticbeanstalk:application:environment"
+              - resource  = ""
+              - value     = "mypassword"
+            },
+          - {
+              - name      = "DB_USER"
+              - namespace = "aws:elasticbeanstalk:application:environment"
+              - resource  = ""
+              - value     = "myuser"
+            },
+          - {
+              - name      = "DefaultSSHPort"
+              - namespace = "aws:elasticbeanstalk:control"
+              - resource  = ""
+              - value     = "22"
+            },
+          - {
+              - name      = "DeleteOnTerminate"
+              - namespace = "aws:elasticbeanstalk:cloudwatch:logs"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "DeleteOnTerminate"
+              - namespace = "aws:elasticbeanstalk:cloudwatch:logs:health"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "DeploymentPolicy"
+              - namespace = "aws:elasticbeanstalk:command"
+              - resource  = ""
+              - value     = "AllAtOnce"
+            },
+          - {
+              - name      = "DisableIMDSv1"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "EC2KeyName"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = "bogdan2"
+            },
+          - {
+              - name      = "ELBScheme"
+              - namespace = "aws:ec2:vpc"
+              - resource  = ""
+              - value     = "public"
+            },
+          - {
+              - name      = "ELBSubnets"
+              - namespace = "aws:ec2:vpc"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "EnableCapacityRebalancing"
+              - namespace = "aws:autoscaling:asg"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "EnableSpot"
+              - namespace = "aws:ec2:instances"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "EnhancedHealthAuthEnabled"
+              - namespace = "aws:elasticbeanstalk:healthreporting:system"
+              - resource  = ""
+              - value     = "true"
+            },
+          - {
+              - name      = "EnvironmentType"
+              - namespace = "aws:elasticbeanstalk:environment"
+              - resource  = ""
+              - value     = "SingleInstance"
+            },
+          - {
+              - name      = "EnvironmentVariables"
+              - namespace = "aws:cloudformation:template:parameter"
+              - resource  = ""
+              - value     = "DB_USER=myuser,DB_HOST=tfweb2.cwyboycueldk.us-east-2.rds.amazonaws.com,DB_DATABASE=web2,DB_PASSWORD=mypassword"
+            },
+          - {
+              - name      = "ExternalExtensionsS3Bucket"
+              - namespace = "aws:elasticbeanstalk:environment"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "ExternalExtensionsS3Key"
+              - namespace = "aws:elasticbeanstalk:environment"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "HasCoupledDatabase"
+              - namespace = "aws:rds:dbinstance"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "HealthCheckSuccessThreshold"
+              - namespace = "aws:elasticbeanstalk:healthreporting:system"
+              - resource  = ""
+              - value     = "Ok"
+            },
+          - {
+              - name      = "HealthStreamingEnabled"
+              - namespace = "aws:elasticbeanstalk:cloudwatch:logs:health"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "HooksPkgUrl"
+              - namespace = "aws:cloudformation:template:parameter"
+              - resource  = ""
+              - value     = "https://elasticbeanstalk-platform-assets-us-east-2.s3.us-east-2.amazonaws.com/stalks/eb_php74_amazon_linux_2_1.0.1434.0_20220128202133/lib/hooks.tar.gz"
+            },
+          - {
+              - name      = "IamInstanceProfile"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = "aws-elasticbeanstalk-ec2-role"
+            },
+          - {
+              - name      = "IgnoreHealthCheck"
+              - namespace = "aws:elasticbeanstalk:command"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "ImageId"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = "ami-0486f2d04f15e7616"
+            },
+          - {
+              - name      = "InstancePort"
+              - namespace = "aws:cloudformation:template:parameter"
+              - resource  = ""
+              - value     = "80"
+            },
+          - {
+              - name      = "InstanceRefreshEnabled"
+              - namespace = "aws:elasticbeanstalk:managedactions:platformupdate"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "InstanceType"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = "t2.micro"
+            },
+          - {
+              - name      = "InstanceTypeFamily"
+              - namespace = "aws:cloudformation:template:parameter"
+              - resource  = ""
+              - value     = "t2"
+            },
+          - {
+              - name      = "InstanceTypes"
+              - namespace = "aws:ec2:instances"
+              - resource  = ""
+              - value     = "t2.micro, t2.small"
+            },
+          - {
+              - name      = "LaunchTimeout"
+              - namespace = "aws:elasticbeanstalk:control"
+              - resource  = ""
+              - value     = "0"
+            },
+          - {
+              - name      = "LaunchType"
+              - namespace = "aws:elasticbeanstalk:control"
+              - resource  = ""
+              - value     = "Migration"
+            },
+          - {
+              - name      = "LogPublicationControl"
+              - namespace = "aws:elasticbeanstalk:hostmanager"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "ManagedActionsEnabled"
+              - namespace = "aws:elasticbeanstalk:managedactions"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "MaxBatchSize"
+              - namespace = "aws:autoscaling:updatepolicy:rollingupdate"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "MaxSize"
+              - namespace = "aws:autoscaling:asg"
+              - resource  = ""
+              - value     = "1"
+            },
+          - {
+              - name      = "MinInstancesInService"
+              - namespace = "aws:autoscaling:updatepolicy:rollingupdate"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "MinSize"
+              - namespace = "aws:autoscaling:asg"
+              - resource  = ""
+              - value     = "1"
+            },
+          - {
+              - name      = "MonitoringInterval"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = "5 minute"
+            },
+          - {
+              - name      = "Notification Endpoint"
+              - namespace = "aws:elasticbeanstalk:sns:topics"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "Notification Protocol"
+              - namespace = "aws:elasticbeanstalk:sns:topics"
+              - resource  = ""
+              - value     = "email"
+            },
+          - {
+              - name      = "Notification Topic ARN"
+              - namespace = "aws:elasticbeanstalk:sns:topics"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "Notification Topic Name"
+              - namespace = "aws:elasticbeanstalk:sns:topics"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "PauseTime"
+              - namespace = "aws:autoscaling:updatepolicy:rollingupdate"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "PreferredStartTime"
+              - namespace = "aws:elasticbeanstalk:managedactions"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "ProxyServer"
+              - namespace = "aws:elasticbeanstalk:environment:proxy"
+              - resource  = ""
+              - value     = "apache"
+            },
+          - {
+              - name      = "RetentionInDays"
+              - namespace = "aws:elasticbeanstalk:cloudwatch:logs"
+              - resource  = ""
+              - value     = "7"
+            },
+          - {
+              - name      = "RetentionInDays"
+              - namespace = "aws:elasticbeanstalk:cloudwatch:logs:health"
+              - resource  = ""
+              - value     = "7"
+            },
+          - {
+              - name      = "RollbackLaunchOnFailure"
+              - namespace = "aws:elasticbeanstalk:control"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "RollingUpdateEnabled"
+              - namespace = "aws:autoscaling:updatepolicy:rollingupdate"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "RollingUpdateType"
+              - namespace = "aws:autoscaling:updatepolicy:rollingupdate"
+              - resource  = ""
+              - value     = "Time"
+            },
+          - {
+              - name      = "RootVolumeIOPS"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "RootVolumeSize"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "RootVolumeThroughput"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "RootVolumeType"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "SSHSourceRestriction"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = "tcp,22,22,0.0.0.0/0"
+            },
+          - {
+              - name      = "SecurityGroups"
+              - namespace = "aws:autoscaling:launchconfiguration"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "ServiceRole"
+              - namespace = "aws:elasticbeanstalk:environment"
+              - resource  = ""
+              - value     = "AWSServiceRoleForElasticBeanstalk"
+            },
+          - {
+              - name      = "SpotFleetOnDemandAboveBasePercentage"
+              - namespace = "aws:ec2:instances"
+              - resource  = ""
+              - value     = "0"
+            },
+          - {
+              - name      = "SpotFleetOnDemandBase"
+              - namespace = "aws:ec2:instances"
+              - resource  = ""
+              - value     = "0"
+            },
+          - {
+              - name      = "SpotMaxPrice"
+              - namespace = "aws:ec2:instances"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "StaticFiles"
+              - namespace = "aws:cloudformation:template:parameter"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "StreamLogs"
+              - namespace = "aws:elasticbeanstalk:cloudwatch:logs"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "Subnets"
+              - namespace = "aws:ec2:vpc"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "SupportedArchitectures"
+              - namespace = "aws:ec2:instances"
+              - resource  = ""
+              - value     = "x86_64"
+            },
+          - {
+              - name      = "SystemType"
+              - namespace = "aws:elasticbeanstalk:healthreporting:system"
+              - resource  = ""
+              - value     = "enhanced"
+            },
+          - {
+              - name      = "Timeout"
+              - namespace = "aws:autoscaling:updatepolicy:rollingupdate"
+              - resource  = ""
+              - value     = "PT30M"
+            },
+          - {
+              - name      = "Timeout"
+              - namespace = "aws:elasticbeanstalk:command"
+              - resource  = ""
+              - value     = "600"
+            },
+          - {
+              - name      = "UpdateLevel"
+              - namespace = "aws:elasticbeanstalk:managedactions:platformupdate"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "VPCId"
+              - namespace = "aws:ec2:vpc"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "XRayEnabled"
+              - namespace = "aws:elasticbeanstalk:xray"
+              - resource  = ""
+              - value     = "false"
+            },
+          - {
+              - name      = "allow_url_fopen"
+              - namespace = "aws:elasticbeanstalk:container:php:phpini"
+              - resource  = ""
+              - value     = "On"
+            },
+          - {
+              - name      = "composer_options"
+              - namespace = "aws:elasticbeanstalk:container:php:phpini"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "display_errors"
+              - namespace = "aws:elasticbeanstalk:container:php:phpini"
+              - resource  = ""
+              - value     = "Off"
+            },
+          - {
+              - name      = "document_root"
+              - namespace = "aws:elasticbeanstalk:container:php:phpini"
+              - resource  = ""
+              - value     = ""
+            },
+          - {
+              - name      = "max_execution_time"
+              - namespace = "aws:elasticbeanstalk:container:php:phpini"
+              - resource  = ""
+              - value     = "60"
+            },
+          - {
+              - name      = "memory_limit"
+              - namespace = "aws:elasticbeanstalk:container:php:phpini"
+              - resource  = ""
+              - value     = "256M"
+            },
+          - {
+              - name      = "zlib.output_compression"
+              - namespace = "aws:elasticbeanstalk:container:php:phpini"
+              - resource  = ""
+              - value     = "Off"
+            },
+        ] -> null
+      - application            = "web2tf" -> null
+      - arn                    = "arn:aws:elasticbeanstalk:us-east-2:430572376143:environment/web2tf/web2tfenv" -> null
+      - autoscaling_groups     = [
+          - "awseb-e-ngdmtfx7av-stack-AWSEBAutoScalingGroup-1WO95SR2UTLES",
+        ] -> null
+      - cname                  = "web2.us-east-2.elasticbeanstalk.com" -> null
+      - cname_prefix           = "web2" -> null
+      - description            = "" -> null
+      - endpoint_url           = "3.131.127.137" -> null
+      - id                     = "e-ngdmtfx7av" -> null
+      - instances              = [
+          - "i-0846b072f4980c253",
+        ] -> null
+      - launch_configurations  = [
+          - "awseb-e-ngdmtfx7av-stack-AWSEBAutoScalingLaunchConfiguration-FP8YceWyUbh4",
+        ] -> null
+      - load_balancers         = [] -> null
+      - name                   = "web2tfenv" -> null
+      - platform_arn           = "arn:aws:elasticbeanstalk:us-east-2::platform/PHP 7.4 running on 64bit Amazon Linux 2/3.3.10" -> null
+      - queues                 = [] -> null
+      - solution_stack_name    = "64bit Amazon Linux 2 v3.3.10 running PHP 7.4" -> null
+      - tags                   = {} -> null
+      - tags_all               = {} -> null
+      - tier                   = "WebServer" -> null
+      - triggers               = [] -> null
+      - version_label          = "v1" -> null
+      - wait_for_ready_timeout = "20m" -> null
+
+      - setting {
+          # At least one attribute in this block is (or was) sensitive,
+          # so its contents will not be displayed.
+        }
+    }
+
+  # null_resource.db_setup will be destroyed
+  - resource "null_resource" "db_setup" {
+      - id = "3992039767129082304" -> null
+    }
