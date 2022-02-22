@@ -23,7 +23,16 @@ resource "aws_db_instance" "dbtfweb2" {
   password               = var.data_base.password
   publicly_accessible    = true
   skip_final_snapshot    = true
-
+//upload data to db
+  provisioner "local-exec" {
+    command = "echo 'mysql --host=${aws_db_instance.tfweb2.address} --port=3306 --user=${var.data_base.user} --password=${var.data_base.password} --database=${var.data_base.base} < web2.sql' > set_d>
+  }
+  provisioner "local-exec" {
+    command = "sudo bash set_db.sh"
+  }
+  provisioner "local-exec" {
+    command = "rm -r set_db.sh"
+  }
 }
 
 //setup application
@@ -65,7 +74,7 @@ resource "aws_elastic_beanstalk_environment""web2tfenv"{
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DB_HOST"
-    value     = data.aws_db_instance.database.address
+    value     = aws_db_instance.tfweb2.address
   }
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
