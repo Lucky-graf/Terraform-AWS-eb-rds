@@ -45,7 +45,7 @@ resource "aws_elastic_beanstalk_application" "web2tf"{
 resource "aws_elastic_beanstalk_environment""web2tfenv"{
   name                = "web2tfenv"
   application         = "${aws_elastic_beanstalk_application.web2tf.name}"
-  solution_stack_name = "64bit Amazon Linux 2 v3.3.12 running PHP 7.4"
+  solution_stack_name = "64bit Amazon Linux 2 v3.3.10 running PHP 7.4"
   cname_prefix        = "web2"
 
   setting {
