@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+ install:
+   on-failure: ABORT
+   commands:
+      - apt install -y software-properties-common
+      - add-apt-repository -y ppa:ondrej/php
+      - apt update -y
+      - apt-get install -y wget
+      - apt-get install -y php7.4
+      - wget -O phpunit https://phar.phpunit.de/phpunit-5.phar
+      - chmod +x ./phpunit
+      - ./phpunit $CODEBUILD_SRC_DIR/unit_test/CalculatorTest.php
