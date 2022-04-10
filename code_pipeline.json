@@ -1,70 +1,100 @@
 {
-  "pipeline": {
-    "name": "web2-projects",
-    "roleArn": "arn:aws:iam::430572376143:role/service-role/AWSCodePipelineServiceRole-us-east-2-web2-projects",
-    "artifactStore": {
-        "type": "S3",
-        "location": "codepipeline-us-east-2-300402815391"
+    "pipeline": {
+        "name": "web2-projects",
+        "roleArn": "arn:aws:iam::430572376143:role/service-role/AWSCodePipelineServiceRole-us-east-2-web2-projects",
+        "artifactStore": {
+            "type": "S3",
+            "location": "codepipeline-us-east-2-300402815391"
         },
-    "stages": [
-    {
-        "name": "Source",
-        "actions": [
+        "stages": [
             {
                 "name": "Source",
-                "actionTypeId": {
-                        "category": "Source",
-                        "owner": "ThirdParty",
-                        "provider": "GitHub",
-                        "version": "1"
-                    },
-                "runOrder": 1,
-                "configuration": {
-                        "Branch": "master",
-                        "OAuthToken": "****",
-                        "Owner": "Lucky-graf",
-                        "PollForSourceChanges": "false",
-                        "Repo": "web2"
-                    },
-                "outputArtifacts": [
+                "actions": [
                     {
-                        "name": "SourceArtifact"
+                        "name": "Source",
+                        "actionTypeId": {
+                            "category": "Source",
+                            "owner": "ThirdParty",
+                            "provider": "GitHub",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "Branch": "master",
+                            "OAuthToken": "****",
+                            "Owner": "Lucky-graf",
+                            "PollForSourceChanges": "false",
+                            "Repo": "web2"
+                        },
+                        "outputArtifacts": [
+                            {
+                                "name": "SourceArtifact"
+                            }
+                        ],
+                        "inputArtifacts": [],
+                        "region": "us-east-2",
+                        "namespace": "SourceVariables"
                     }
-                  ],
-            "inputArtifacts": [],
-            "region": "us-east-2",
-            "namespace": "SourceVariables"
-          }
-        ]
-      },
-    {
-        "name": "Deploy",
-        "actions": [
+                ]
+            },
+            {
+                "name": "Unit_TEST",
+                "actions": [
+                    {
+                        "name": "Test_php",
+                        "actionTypeId": {
+                            "category": "Build",
+                            "owner": "AWS",
+                            "provider": "CodeBuild",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "ProjectName": "Web2"
+                        },
+                        "outputArtifacts": [],
+                        "inputArtifacts": [
+                            {
+                                "name": "SourceArtifact"
+                            }
+                        ],
+                        "region": "us-east-2"
+                    }
+                ]
+            },
             {
                 "name": "Deploy",
-                "actionTypeId": {
-                        "category": "Deploy",
-                        "owner": "AWS",
-                        "provider": "ElasticBeanstalk",
-                        "version": "1"
-                            },
-                "runOrder": 1,
-                "configuration": {
-                        "ApplicationName": "web2tf",
-                        "EnvironmentName": "web2tfenv"
-                    },
-                "outputArtifacts": [],
-                "inputArtifacts": [
+                "actions": [
                     {
-                        "name": "SourceArtifact"
+                        "name": "Deploy",
+                        "actionTypeId": {
+                            "category": "Deploy",
+                            "owner": "AWS",
+                            "provider": "ElasticBeanstalk",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "ApplicationName": "web2tf",
+                            "EnvironmentName": "web2tfenv"
+                        },
+                        "outputArtifacts": [],
+                        "inputArtifacts": [
+                            {
+                                "name": "SourceArtifact"
+                            }
+                        ],
+                        "region": "us-east-2",
+                        "namespace": "DeployVariables"
                     }
-                  ],
-                "region": "us-east-2",
-                "namespace": "DeployVariables"
+                ]
             }
-          ]
-        }
-      ],
-    "version": 1
-  }
+        ],
+        "version": 6
+    },
+    "metadata": {
+        "pipelineArn": "arn:aws:codepipeline:us-east-2:430572376143:web2-projects",
+        "created": "2022-02-19T23:03:32.557000+00:00",
+        "updated": "2022-04-06T20:47:02.369000+00:00"
+    }
 }
